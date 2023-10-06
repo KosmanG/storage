@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 
 	"github.com/KosmanG/storage/internal/storage"
 )
@@ -9,5 +10,10 @@ import (
 func main() {
 	st := storage.NewStorage()
 
-	fmt.Println(st)
+	file, err := st.Upload("test.txt", []byte("Hello"))
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println("it uploaded", file)
 }
